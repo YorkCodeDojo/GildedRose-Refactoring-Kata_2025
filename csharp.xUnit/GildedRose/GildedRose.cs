@@ -26,89 +26,44 @@ public class GildedRose(IList<Item> items)
             return;
         }
 
-
-        if (item.Name != "Aged Brie" && item.Name != "Backstage passes to a TAFKAL80ETC concert")
+        if (item.Name == "Sulfuras, Hand of Ragnaros")
         {
-            if (item.Quality > 0)
-            {
-                if (item.Name != "Sulfuras, Hand of Ragnaros")
-                {
-                    item.Quality = item.Quality - 1;
-                }
-            }
-        }
-        else
-        {
-            if (item.Quality < 50)
-            {
-                item.Quality = item.Quality + 1;
-
-                if (item.Name == "Backstage passes to a TAFKAL80ETC concert")
-                {
-                    if (item.SellIn < 11)
-                    {
-                        if (item.Quality < 50)
-                        {
-                            item.Quality = item.Quality + 1;
-                        }
-                    }
-
-                    if (item.SellIn < 6)
-                    {
-                        if (item.Quality < 50)
-                        {
-                            item.Quality = item.Quality + 1;
-                        }
-                    }
-                }
-            }
+            UpdateSulfuras(item);
+            return;
         }
 
-        if (item.Name != "Sulfuras, Hand of Ragnaros")
+
+        if (item.Quality > 0)
         {
-            item.SellIn = item.SellIn - 1;
+            item.Quality -= 1;
         }
+
+        item.SellIn -= 1;
 
         if (item.SellIn < 0)
         {
-            if (item.Name != "Aged Brie")
+            if (item.Quality > 0)
             {
-                if (item.Name != "Backstage passes to a TAFKAL80ETC concert")
-                {
-                    if (item.Quality > 0)
-                    {
-                        if (item.Name != "Sulfuras, Hand of Ragnaros")
-                        {
-                            item.Quality = item.Quality - 1;
-                        }
-                    }
-                }
-                else
-                {
-                    item.Quality = item.Quality - item.Quality;
-                }
-            }
-            else
-            {
-                if (item.Quality < 50)
-                {
-                    item.Quality = item.Quality + 1;
-                }
+                item.Quality -= 1;
             }
         }
+    }
+
+    private void UpdateSulfuras(Item item)
+    {
     }
 
     private void UpdateBackstagePasses(Item item)
     {
         if (item.Quality < 50)
         {
-            item.Quality = item.Quality + 1;
+            item.Quality += 1;
 
             if (item.SellIn < 11)
             {
                 if (item.Quality < 50)
                 {
-                    item.Quality = item.Quality + 1;
+                    item.Quality += 1;
                 }
             }
 
@@ -116,12 +71,12 @@ public class GildedRose(IList<Item> items)
             {
                 if (item.Quality < 50)
                 {
-                    item.Quality = item.Quality + 1;
+                    item.Quality += 1;
                 }
             }
         }
 
-        item.SellIn = item.SellIn - 1;
+        item.SellIn -= 1;
 
         if (item.SellIn < 0)
         {
@@ -133,16 +88,16 @@ public class GildedRose(IList<Item> items)
     {
         if (item.Quality < 50)
         {
-            item.Quality = item.Quality + 1;
+            item.Quality += 1;
         }
 
-        item.SellIn = item.SellIn - 1;
+        item.SellIn -= 1;
 
         if (item.SellIn < 0)
         {
             if (item.Quality < 50)
             {
-                item.Quality = item.Quality + 1;
+                item.Quality += 1;
             }
         }
     }
