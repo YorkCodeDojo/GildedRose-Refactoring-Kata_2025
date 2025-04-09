@@ -14,25 +14,28 @@ public class GildedRose(IList<Item> items)
 
     private void UpdateItem(Item item)
     {
-        if (item.Name == "Aged Brie")
+        switch (item.Name)
         {
-            UpdateAgedBrie(item);
-            return;
+            case "Aged Brie":
+                UpdateAgedBrie(item);
+                break;
+            case "Backstage passes to a TAFKAL80ETC concert":
+                UpdateBackstagePasses(item);
+                break;
+            case "Sulfuras, Hand of Ragnaros":
+                UpdateSulfuras(item);
+                break;
+            case "Conjured":
+                UpdateConjured(item);
+                break;
+            default:
+                UpdateNormalItem(item);
+                break;
         }
+    }
 
-        if (item.Name == "Backstage passes to a TAFKAL80ETC concert")
-        {
-            UpdateBackstagePasses(item);
-            return;
-        }
-
-        if (item.Name == "Sulfuras, Hand of Ragnaros")
-        {
-            UpdateSulfuras(item);
-            return;
-        }
-
-
+    private static void UpdateNormalItem(Item item)
+    {
         if (item.Quality > 0)
         {
             item.Quality -= 1;
@@ -49,6 +52,32 @@ public class GildedRose(IList<Item> items)
         }
     }
 
+    private static void UpdateConjured(Item item)
+    {
+        if (item.Quality > 1)
+        {
+            item.Quality -= 2;
+        }
+        else if (item.Quality > 0)
+        {
+            item.Quality -= 1;
+        }
+
+        item.SellIn -= 1;
+
+        if (item.SellIn < 0)
+        {
+            if (item.Quality > 1)
+            {
+                item.Quality -= 2;
+            }
+            else if (item.Quality > 0)
+            {
+                item.Quality -= 1;
+            }
+        }
+    }
+    
     private void UpdateSulfuras(Item item)
     {
     }
