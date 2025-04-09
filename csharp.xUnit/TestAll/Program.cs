@@ -13,7 +13,8 @@ for (var quality = 0; quality < 100; quality++)
             new Item { Name = "normal", SellIn = sellin, Quality = quality },
             new Item { Name = "Aged Brie", SellIn = sellin, Quality = quality },
             new Item { Name = "Sulfuras, Hand of Ragnaros", SellIn = sellin, Quality = quality },
-            new Item { Name = "Backstage passes to a TAFKAL80ETC concert", SellIn = sellin, Quality = quality }
+            new Item { Name = "Backstage passes to a TAFKAL80ETC concert", SellIn = sellin, Quality = quality },
+            new Item { Name = "Conjured", SellIn = sellin, Quality = quality }
         };
         GildedRose app = new GildedRose(items);
         app.UpdateQuality();
