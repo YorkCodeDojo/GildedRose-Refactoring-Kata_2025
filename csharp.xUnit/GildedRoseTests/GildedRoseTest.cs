@@ -4,7 +4,7 @@ using GildedRoseKata;
 
 namespace GildedRoseTests;
 
-public class GildedRoseTest
+public class GildedRoseTests
 {
     [Fact]
     public void NormalItemDecreases()
