@@ -1,0 +1,1 @@
+﻿{"Name":"","SellIn":0,"Quality":-100}
